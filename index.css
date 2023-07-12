@@ -1,0 +1,266 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap");
+:root {
+  --Off-white: hsl(36, 100%, 99%);
+  --Grayish-blue: hsl(233, 8%, 79%);
+  --Dark-grayish-blue: hsl(236, 13%, 42%);
+  --Very-dark-blue: hsl(240, 100%, 5%);
+  --Soft-orange: hsl(35, 77%, 62%);
+  --Soft-red: hsl(5, 85%, 63%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.wrapper {
+  max-width: 1100px; /*这里给他设置一个max-width，可以更好地帮助设置margin让它在中间*/
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* nav bar*/
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.menu-button {
+  /*当你设置不可见的时候，这个图片就好像不存在一样，不会占取位置*/
+  display: none;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 2rem;
+}
+.nav-links li {
+  color: var(--Dark-grayish-blue);
+  cursor: pointer;
+}
+
+.nav-links li:hover {
+  color: var(--Soft-orange);
+}
+
+/*main content in grid */
+
+.main-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 3rem;
+  height: 768px;
+}
+
+section {
+  grid-column: 2 span;
+  grid-row: 1 span;
+}
+
+.picture {
+  margin-bottom: 1rem;
+  width: fit-content;
+}
+section img {
+  max-width: 100%;
+}
+.more-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  gap: 4rem;
+}
+
+.more-info div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.more-info h1 {
+  font-weight: 800;
+  font-size: 3rem;
+}
+.more-info p {
+  line-height: 2rem;
+  color: var(--Dark-grayish-blue);
+  font-weight: 400;
+}
+
+.more-info button {
+  background-color: var(--Soft-red);
+  color: white;
+  text-transform: uppercase;
+  padding: 0.6rem 1rem;
+  width: 45%;
+  word-spacing: 0.2rem;
+  letter-spacing: 0.3rem;
+  border-radius: 5px;
+  border: none;
+}
+.more-info button:hover {
+  background-color: var(--Very-dark-blue);
+}
+
+.sidebar {
+  grid-column: 1 span;
+  grid-row: 1 span;
+  background-color: var(--Very-dark-blue);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: left;
+}
+.sidebar h2 {
+  color: var(--Soft-orange);
+  font-size: 2rem;
+}
+
+.sidebar p {
+  color: var(--Grayish-blue);
+}
+
+.sidebar h3:hover {
+  color: var(--Soft-orange);
+}
+
+.footer {
+  grid-column: 3 span;
+  grid-row: 1 span;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+.footer article {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.footer img {
+  width: 100px;
+}
+.footer div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer div p:first-child {
+  font-size: 1.6rem;
+  color: var(--Grayish-blue);
+  font-weight: 700;
+}
+.footer div p:last-child {
+  color: var(--Dark-grayish-blue);
+  font-weight: 400;
+  line-height: 1.5rem;
+  text-align: left;
+}
+
+.footer div h4:hover {
+  color: var(--Soft-red);
+}
+
+@media screen and (max-width: 740px) {
+  .wrapper {
+    padding: 1rem;
+  }
+  /* The Overlay (background) */
+  .navbar-nav {
+    /*把这个移开以后，三条线的选项图片自动移去右边*/
+    display: none;
+    position: fixed;
+    min-height: 100vh;
+    background-color:beige;
+    width: 70%; /* Height & width depends on how you want to reveal the overlay (see JS below) */
+    right: -5%;
+    top: 0;
+    padding: 2rem;
+    /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+    z-index: 1;
+  }
+
+  .menu-button {
+    display: block;
+  }
+  .close-button {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+  }
+  .nav-links li {
+    color: var(--darkBlue);
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.5s;
+    display: block;
+  }
+  /* Position the content inside the overlay */
+  .nav-links {
+    padding-top: 30%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-links li:hover,
+  .nav-links li:focus {
+    color: var(--Soft-orange);
+  }
+
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .more-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 2rem;
+  }
+  .more-info button {
+    padding: 0.5rem 1rem;
+    width: 50%;
+    word-spacing: 0.2rem;
+    letter-spacing: 0.3rem;
+  }
+  .sidebar hr {
+    margin: 1.5rem 0;
+  }
+  .footer {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer img {
+    width: 100%;
+  }
+  .footer article {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  article div {
+    width: 366px;
+  }
+
+  /* navbar overlay effect*/
+}
